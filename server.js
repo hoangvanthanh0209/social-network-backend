@@ -1,6 +1,8 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const colors = require('colors')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const connectDB = require('./config/db')
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware')
@@ -14,6 +16,14 @@ dotenv.config()
 connectDB()
 
 const app = express()
+
+app.use(bodyParser.json({ limit: '30mb' }))
+app.use(bodyParser.urlencoded({ extended: true, limit: '30mb' }))
+app.use(cors())
+
+app.get('/', (req, res) => {
+    res.send('API is running')
+})
 
 app.use('/api/user', userRoutes)
 app.use('/api/chat', chatRoutes)

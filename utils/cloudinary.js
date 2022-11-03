@@ -20,7 +20,7 @@ const deleteImage = async (cloudinaryId) => {
     await cloudinary.uploader.destroy(cloudinaryId)
 }
 
-const uploadMp3 = async (userFolder, folder, path) => {
+const uploadVideo = async (userFolder, folder, path) => {
     const time = moment(Date.now()).format('DD-MM-YYYY-HH:mm:ss')
     const name = `${folder.replace('/', '-')}-${time}`
     const options = {
@@ -30,9 +30,9 @@ const uploadMp3 = async (userFolder, folder, path) => {
     return await cloudinary.uploader.upload(path, options)
 }
 
-const deleteMp3 = async (cloudinaryId) => {
+const deleteVideo = async (cloudinaryId) => {
     await cloudinary.uploader.destroy(cloudinaryId, { resource_type: 'video' })
 }
 
-module.exports = { uploadImage, deleteImage, uploadMp3, deleteMp3 }
+module.exports = { uploadImage, deleteImage, uploadVideo, deleteVideo }
 module.exports = cloudinary
