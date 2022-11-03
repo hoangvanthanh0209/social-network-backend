@@ -1,7 +1,8 @@
 const express = require('express')
-const connectDB = require('./config/db')
 const dotenv = require('dotenv')
 const colors = require('colors')
+
+const connectDB = require('./config/db')
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware')
 const userRoutes = require('./routes/userRoutes')
 const chatRoutes = require('./routes/chatRoutes')
